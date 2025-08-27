@@ -12,6 +12,7 @@ export const Challenge = ({ navigateTo, showNotifications, setShowNotifications,
   const [challengeTimer, setChallengeTimer] = useState(0);
   const [opponents, setOpponents] = useState([]);
 
+  
   useEffect(() => {
     if (challengeMode === 'setup') {
       setInviteCode(Math.random().toString(36).substring(2, 8).toUpperCase());
