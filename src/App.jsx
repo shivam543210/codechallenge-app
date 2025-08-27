@@ -1,8 +1,13 @@
-// src/App.jsx
+// src/App.jsx - REPLACE YOUR EXISTING FILE
 import React, { useState } from 'react';
 import { Dashboard } from './pages';
 import { Problems } from './pages';
 import { Solve } from './pages';
+import { Challenge } from './pages';
+import { ProblemHistory } from './pages';
+import { Calendar } from './pages';
+import { CodeHistory } from './pages';
+import { FullLeaderboard } from './pages';
 import { useUserStats } from './hooks/useUserStats';
 import './index.css';
 
@@ -19,25 +24,35 @@ const App = () => {
     setCode('');
     setCurrentPage('solve');
   };
-
+ const handleActivityClick = (activity) => {
+    setSelectedActivity(activity);
+    setCurrentPage('codehistory');
+  };
   const navigateTo = (page) => {
     setCurrentPage(page);
   };
 
-  const goBack = () => {
-    setCurrentPage('problems');
+ const goBack = () => {
+    if (currentPage === 'solve') {
+      setCurrentPage('problems');
+    } else if (currentPage === 'codehistory') {
+      setCurrentPage('dashboard');
+    } else {
+      setCurrentPage('dashboard');
+    }
   };
 
   const pageProps = {
     navigateTo,
     handleProblemClick,
+    handleActivityClick,
     userStats,
     showNotifications,
     setShowNotifications,
     currentPage,
   };
 
-  const renderCurrentPage = () => {
+   const renderCurrentPage = () => {
     switch (currentPage) {
       case 'dashboard':
         return <Dashboard {...pageProps} />;
@@ -53,6 +68,22 @@ const App = () => {
             onBack={goBack}
           />
         );
+      case 'challenge':
+        return <Challenge {...pageProps} onBack={goBack} />;
+      case 'problemhistory':
+        return <ProblemHistory {...pageProps} onBack={goBack} />;
+      case 'calendar':
+        return <Calendar {...pageProps} onBack={goBack} />;
+      case 'codehistory':
+        return (
+          <CodeHistory 
+            {...pageProps}
+            selectedActivity={selectedActivity}
+            onBack={goBack}
+          />
+        );
+      case 'fullleaderboard':
+        return <FullLeaderboard {...pageProps} onBack={goBack} />;
       default:
         return <Dashboard {...pageProps} />;
     }

@@ -1,10 +1,9 @@
-// src/pages/Dashboard/components/Leaderboard.jsx
 import React from 'react';
-import { Trophy, Flame } from 'lucide-react';
+import { Trophy, Flame, ChevronRight } from 'lucide-react';
 import { updateLeaderboardWithUserStats } from '../../../utils/helpers';
 import { leaderboard } from '../../../data/mockData';
 
-export const Leaderboard = ({ userStats }) => {
+export const Leaderboard = ({ userStats, navigateTo }) => {
   const updatedLeaderboard = updateLeaderboardWithUserStats(leaderboard, userStats);
 
   const getRankIcon = (rank) => {
@@ -30,18 +29,30 @@ export const Leaderboard = ({ userStats }) => {
   return (
     <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden">
       <div className="p-6 border-b border-white/10">
-        <h3 className="text-xl font-semibold text-white">Leaderboard</h3>
-        <p className="text-gray-400 text-sm mt-1">Top performers this week</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-xl font-semibold text-white">Leaderboard</h3>
+            <p className="text-gray-400 text-sm mt-1">Click to view full rankings</p>
+          </div>
+          <button 
+            onClick={() => navigateTo('fullleaderboard')}
+            className="flex items-center space-x-1 text-blue-400 hover:text-blue-300 text-sm"
+          >
+            <span>View All</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
       <div className="p-6 space-y-3">
         {updatedLeaderboard.map((user, i) => (
           <div 
             key={user.rank} 
-            className={`flex items-center space-x-4 p-3 rounded-lg border ${
+            className={`flex items-center space-x-4 p-3 rounded-lg border cursor-pointer hover:bg-white/5 transition-all duration-200 ${
               user.name === 'You' 
                 ? 'bg-blue-500/10 border-blue-500/30' 
                 : 'bg-white/5 border-white/10'
             }`}
+            onClick={() => navigateTo('fullleaderboard')}
           >
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${getRankBgColor(user.rank)}`}>
               {getRankIcon(user.rank)}
