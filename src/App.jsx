@@ -1,6 +1,7 @@
 // src/App.jsx - REPLACE YOUR EXISTING FILE
 import React, { useState } from 'react';
 import { Dashboard } from './pages';
+import { ThemeProvider } from './components/common/ThemeProvider';
 import { Problems } from './pages';
 import { Solve } from './pages';
 import { Challenge } from './pages';
@@ -90,9 +91,11 @@ const App = () => {
   };
 
   return (
+    <ThemeProvider>
     <div>
       {renderCurrentPage()}
     </div>
+  </ThemeProvider>
   );
 };
 
