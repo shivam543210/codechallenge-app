@@ -6,3 +6,4 @@ export { ProblemHistory } from './ProblemHistory/ProblemHistory';
 export { Calendar } from './Calendar/Calendar';
 export { CodeHistory } from './CodeHistory/CodeHistory';
 export { FullLeaderboard } from './FullLeaderboard/FullLeaderboard';
+export { Community} from './Community/Community'

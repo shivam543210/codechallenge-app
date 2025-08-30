@@ -69,7 +69,7 @@ export const NavigationHeader = ({
               </button>
 
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 bg-gray-800 rounded-xl shadow-xl border border-white/10 z-50">
+                <div className="absolute right-0 mt-2 w-80 bg-gray-800 rounded-xl shadow-xl border border-white/10 z-100">
                   <div className="p-4 border-b border-white/10">
                     <h3 className="text-white font-medium">Notifications</h3>
                   </div>
@@ -85,9 +85,16 @@ export const NavigationHeader = ({
               )}
             </div>
 
-            <button className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 flex items-center space-x-2">
+            <button 
+              onClick={() => navigateTo('community')}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                currentPage === 'community' 
+                  ? 'bg-purple-600 text-white' 
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
               <Users className="w-4 h-4" />
-              <span>1v1 Challenge</span>
+              <span>Community</span>
             </button>
 
             <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200">

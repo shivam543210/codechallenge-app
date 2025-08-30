@@ -15,8 +15,10 @@ export const Dashboard = ({
   setShowNotifications,
   currentPage 
 }) => {
+  // const { theme } = useTheme(); // Use theme
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"> {/* Apply theme background */}
       <NavigationHeader 
         title="CodeChallenge" 
         currentPage={currentPage}
@@ -25,10 +27,10 @@ export const Dashboard = ({
         setShowNotifications={setShowNotifications}
       />
       
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Welcome Section */}
+     <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Welcome Section - using hardcoded classes instead of theme */}
         <div className="mb-8">
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-white mb-2">Welcome back, Coder!</h2>

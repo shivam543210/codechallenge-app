@@ -1,12 +1,13 @@
 // src/App.jsx - REPLACE YOUR EXISTING FILE
 import React, { useState } from 'react';
 import { Dashboard } from './pages';
-import { ThemeProvider } from './components/common/ThemeProvider';
+// import { ThemeProvider } from './components/common/ThemeProvider';
 import { Problems } from './pages';
 import { Solve } from './pages';
 import { Challenge } from './pages';
 import { ProblemHistory } from './pages';
 import { Calendar } from './pages';
+import { Community } from './pages'
 import { CodeHistory } from './pages';
 import { FullLeaderboard } from './pages';
 import { useUserStats } from './hooks/useUserStats';
@@ -91,11 +92,11 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider>
+   
     <div>
       {renderCurrentPage()}
     </div>
-  </ThemeProvider>
+  
   );
 };
 
