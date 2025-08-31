@@ -9,7 +9,7 @@ export const Community = ({ navigateTo, showNotifications, setShowNotifications,
   const [sortBy, setSortBy] = useState('recent'); // recent, popular, trending
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-
+  const [showFilters, setShowFilters] = useState(false);
   const categories = [
     { id: 'all', name: 'All Posts', color: 'bg-blue-500' },
     { id: 'algorithms', name: 'Algorithms', color: 'bg-green-500' },
@@ -18,6 +18,7 @@ export const Community = ({ navigateTo, showNotifications, setShowNotifications,
     { id: 'discussion', name: 'General Discussion', color: 'bg-yellow-500' },
     { id: 'tips', name: 'Tips & Tricks', color: 'bg-indigo-500' },
     { id: 'career', name: 'Career Advice', color: 'bg-pink-500' }
+      
   ];
 
   const handleCreatePost = () => {
@@ -33,7 +34,9 @@ export const Community = ({ navigateTo, showNotifications, setShowNotifications,
     setActiveView('feed');
     setSelectedPost(null);
   };
-
+  const handleSortByChange = (event) => {
+    setSortBy(event.target.value);
+  }
   const renderActiveView = () => {
     switch (activeView) {
       case 'create':
